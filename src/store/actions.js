@@ -8,7 +8,11 @@ const signOut = ({commit}) => {
   commit(types.SIGN_OUT)
 }
 
+const setEvents = ({commit}, event_payload)  => {
+  commit(types.SET_EVENTS, event_payload)
+}
 export default {
   signIn,
-  signOut
+  signOut,
+  setEvents
 }

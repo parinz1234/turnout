@@ -1,7 +1,7 @@
 <template>
   <div class="columns is-multiline ">
       <div class="column is-12 has-text-centered">
-        <h1 class="title">Sign In</h1>
+        <h1 class="title">Sign Up</h1>
       </div>
       <div v-show="error.message" class="column is-12">
         <div class="notification is-danger">
@@ -10,7 +10,7 @@
         </div>
       </div>          
       <div class="column is-12">
-          <form @submit.prevent="signIn">
+          <form @submit.prevent="signUp">
             
             <div class="column is-12">
               <div class="field">
@@ -31,14 +31,15 @@
             </div>
 
             <div class="column is-12">
-                <button class="button is-success ">Sign In</button>
+                <button class="button is-success ">Sign Up</button>
             </div>
 
           </form>
+      
       </div>
 
       <div class="column is-12">
-          <router-link to="/signup">Not a user ? Sign Up</router-link>
+          <router-link to="/signin">Alread have a user ? Sign Ip</router-link>
       </div>
   </div>
 </template>
@@ -53,10 +54,8 @@
       }
     }),
     methods: {
-      signIn () {
-        // console.log(this.email)
-        // console.log(this.password)
-        firebaseApp.auth().signInWithEmailAndPassword(this.email, this.password)
+      signUp () {
+        firebaseApp.auth().createUserWithEmailAndPassword(this.email, this.password)
           .catch(err => {
             this.error = err
           })
@@ -64,10 +63,4 @@
     }
   }
 </script>
-<style scoped lang="scss">
-  // .title {
-  //   .text {
-  //     color: red
-  //   }
-  // }
-</style>
+
